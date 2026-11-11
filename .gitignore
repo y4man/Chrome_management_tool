@@ -1,0 +1,23 @@
+# Virtual env / caches
+xenv/
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Browser profile data (cookies, sessions)
+chrome_data/
+chrome_profiles/
+chrome_profiles_data/
+chrome_extensions/
+proxy_extensions/
+
+# Credentials, accounts, keys, logs
+*.csv
+*.db
+*.json
+mails.txt
+proxies.txt
+password_change_log.txt
+tailscale key
+bad emails/

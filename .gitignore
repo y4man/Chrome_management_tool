@@ -21,3 +21,7 @@ proxies.txt
 password_change_log.txt
 tailscale key
 bad emails/
+
+# Example inputs are safe to commit
+!examples/
+!examples/**

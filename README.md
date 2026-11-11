@@ -1,4 +1,54 @@
-# Chrome Proxy Manager Ultimate
+# Chrome Management Tool
+
+Desktop tools (Python + Tkinter + Selenium) for managing many Chrome profiles, each with its own authenticated proxy, cookies and optional Gmail login. Data is stored in SQLite.
+
+## Project Structure
+
+```
+.
+├── chromax_ultimate.py              # Main app: Chrome Proxy Manager Ultimate (GUI)
+├── chrome_profile_manager.py        # Alternate profile manager with a modified workflow (GUI)
+├── tools/
+│   ├── strong_password_generator.py # Fills "new password" column in gmails.csv
+│   └── gmail_password_changer.py    # Batch-changes Gmail passwords from a CSV
+├── examples/                        # Sample input files (fake data)
+│   ├── profiles.txt
+│   ├── proxies.txt
+│   └── gmails.csv
+├── legacy/                          # Earlier versions, kept for reference
+├── requirements.txt
+└── README.md
+```
+
+Runtime data (Chrome profiles, `*.db` databases, CSVs with credentials, logs) is created next to where you run the scripts and is **git-ignored**. Never commit it.
+
+## Quick Start
+
+```bash
+git clone https://github.com/y4man/Chrome_management_tool.git
+cd Chrome_management_tool
+python -m venv venv
+venv\Scripts\activate        # Windows  (Linux/macOS: source venv/bin/activate)
+pip install -r requirements.txt
+python chromax_ultimate.py
+```
+
+Requires Python 3.10+ and Google Chrome. Selenium 4 downloads a matching ChromeDriver automatically.
+
+## Password Tools
+
+```bash
+# 1. Put accounts in gmails.csv (see examples/gmails.csv), then generate new passwords:
+python tools/strong_password_generator.py
+# 2. Rename the output to gmails_with_passwords.csv and run:
+python tools/gmail_password_changer.py
+```
+
+Run them from the project root; results (`successful_accounts.csv`, `bad_emails.csv`, `password_change_log.txt`) are written there.
+
+---
+
+# Chrome Proxy Manager Ultimate — Details
 
 A robust enterprise-grade tool for managing Chrome profiles with proxy authentication and Gmail integration.
 
@@ -25,7 +75,7 @@ A robust enterprise-grade tool for managing Chrome profiles with proxy authentic
 ### Requirements
 ```bash
 # Required
-pip install selenium
+pip install -r requirements.txt
 
 # Optional but recommended
 pip install undetected-chromedriver
@@ -183,19 +233,11 @@ manager.launch_profile(profile)
 - Profile data is stored in `chrome_profiles_data/`
 - Proxy extensions are stored in `proxy_extensions/`
 
-## File Structure
+## Runtime Files
 
-```
-/home/yaman/projects/
-├── chromax_ultimate.py          # Main application
-├── proxy_profiles_ultimate.db   # SQLite database
-├── chrome_profiles_data/        # Chrome profile directories
-│   ├── profile_xxxxx/
-│   └── ...
-└── proxy_extensions/            # Proxy auth extensions
-    ├── ext_profile_xxxxx/
-    └── ...
-```
+- `proxy_profiles_ultimate.db`: SQLite database
+- `chrome_profiles_data/`: Chrome profile directories
+- `proxy_extensions/`: generated proxy auth extensions
 
 ## License
 

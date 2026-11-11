@@ -1,0 +1,4 @@
+Work_Profile_1:proxy1.example.com:8080:proxyuser1:proxypass1:user1@example.com:emailpass1
+proxy2.example.com:3128:proxyuser2:proxypass2:user2@example.com:emailpass2
+proxy3.example.com:8888:proxyuser3:proxypass3
+proxy4.example.com:8080

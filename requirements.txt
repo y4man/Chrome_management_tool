@@ -1,0 +1,4 @@
+selenium>=4.34
+psutil>=7.0
+requests>=2.32
+undetected-chromedriver>=3.5  # optional, improves stealth
